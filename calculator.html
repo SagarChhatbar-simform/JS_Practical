@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scientific Calculator</title>
     <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -16,159 +17,168 @@
         <div class="container">
             <div class="top-div">
                 <div class="main-div">
-                        <div class="input">
-                            <input type="text" placeholder="0" name="inpt-txt" class="inpt-txt">
-                        </div>
+                    <div class="input">
+                        <input type="text" onkeypress="return restrictAlphabets(event)" maxlength="30" placeholder="0"
+                            name="display" id="display" class="inpt-txt">
+                    </div>
 
 
                     <div class="btn-parent">
-
-                        <div class="parent-div">
+                        
+                            <div class="parent">
                             <a>DEG</a>
                             <a>F-E</a>
-                        </div>
+                            </div>
+
+                            <div class="parent">
+
+                                <a>MC</a>
+
+                                <a>MR</a>
+
+                                <a>M+</a>
+
+                                <a>M-</a>
+
+                                <a>MS</a>
+
+                            </div>
+
+                            <div class="parent">
+                                <div class="dropdown">
+                                    <a class="dropbtn">
+                                        ⃤ Trignomerty <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a onclick="sine()">Sin</a>
+                                        <a onclick="cosec()">Cos</a>
+                                        <a onclick="tane()">Tan</a>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown">
+                                    <a class="dropbtn">
+                                        ƒ Functions <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a onclick="display.value= Math.abs(display.value)">Abs</a>
+                                        <a onclick="display.value= Math.acos(display.value)">acos</a>
+                                        <a onclick="display.value= Math.asin(display.value)">asin</a>
+                                        <a onclick="display.value= Math.atan(display.value)">atan</a>
+                                        <a onclick="display.value= Math.ceil(display.value)">ceil</a>
+                                        <a onclick="display.value= Math.floor(display.value)">floor</a>
+                                        
+                                    </div>
+                                </div>
+
+
+                            </div>
+
                     
-                        <div class="parent-div">
+                        <div>
+                            <div class="parent-div" >
 
-                            <a>MC</a>
+                                <button class="btn">2nd</button>
 
-                            <a>MR</a>
+                                <button class="btn" onclick="display.value+='3.14159265359'">π</button>
 
-                            <a>M+</a>
+                                <button class="btn" onclick="display.value+='2.718281828'">e</button>
 
-                            <a>M-</a>
+                                <button class="btn" onclick="display.value=''">C</button>
 
-                            <a>MS</a>
+                                <button class="btn" onclick="deleteChar()"><i class="fa fa-caret-square-o-left"
+                                        aria-hidden="true"></i>
+                                </button>
 
-                        </div>
+                            </div>
 
-                        <div class="parent-div">
-                            <div class="dropdown">
-                                <a class="dropbtn">
-                                    Trignomerty <i class="fa fa-angle-down" aria-hidden="true"></i> 
-                                    </a>
-                                <div class="dropdown-content">
-                                  <a>Sin</a>
-                                  <a>Cos</a>
-                                  <a>Tan</a>
-                                </div>
-                              </div>
-                            
-                              <div class="dropdown">
-                                <a class="dropbtn">
-                                    Functions <i class="fa fa-angle-down" aria-hidden="true"></i> 
-                                    </a>
-                                <div class="dropdown-content">
-                                  <a>Sin</a>
-                                  <a>Cos</a>
-                                  <a>Tan</a>
-                                </div>
-                              </div>
-                            
+                            <div class="parent-div">
 
-                        </div>
+                                <button class="btn" onclick="display.value = Math.pow(display.value,2)">x^2</button>
 
-                        <div class="parent-div" style="margin-top: 10px;">
+                                <button class="btn" onclick="display.value = Math.pow(display.value,-1)">1/x</button>
 
-                            <button class="btn">2nd</button>
+                                <button class="btn" onclick="display.value = 0-display.value;">|x|</button>
 
-                            <button class="btn">π</button>
+                                <button class="btn" onclick="exp()">exp</button>
 
-                            <button class="btn">e</button>
+                                <button class="btn" OnClick="display.value+='%'">mod</button>
 
-                            <button class="btn">C</button>
+                            </div>
 
-                            <button class="btn"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
-                            </button>
+                            <div class="parent-div">
 
-                        </div>
+                                <button class="btn" onclick="display.value = Math.sqrt(display.value)*2">2√x</button>
 
-                        <div class="parent-div">
+                                <button class="btn" OnClick="display.value+='('">(</button>
 
-                            <button class="btn">x^2</button>
+                                <button class="btn" OnClick="display.value+=')'">)</button>
 
-                            <button class="btn">1/x</button>
+                                <button class="btn" onclick="factorial()">n!</button>
 
-                            <button class="btn">|x|</button>
+                                <button class="btn" OnClick="display.value+='/'">÷</button>
 
-                            <button class="btn">exp</button>
+                            </div>
 
-                            <button class="btn">mod</button>
+                            <div class="parent-div">
 
-                        </div>
+                                <button class="btn" onclick="display.value+='**'">x^y</button>
 
-                        <div class="parent-div">
+                                <button class="btn" OnClick="display.value+='7'">7</button>
 
-                            <button class="btn">2 x</button>
+                                <button class="btn" OnClick="display.value+='8'">8</button>
 
-                            <button class="btn">(</button>
+                                <button class="btn" OnClick="display.value+='9'">9</button>
 
-                            <button class="btn">)</button>
+                                <button class="btn" OnClick="display.value+='*'">x</button>
 
-                            <button class="btn">n!</button>
+                            </div>
 
-                            <button class="btn">/</button>
+                            <div class="parent-div">
 
-                        </div>
+                                <button class="btn" onclick="display.value = Math.pow(10,display.value)">10^x</button>
 
-                        <div class="parent-div">
+                                <button class="btn" OnClick="display.value+='4'">4</button>
 
-                            <button class="btn">x^y</button>
+                                <button class="btn" OnClick="display.value+='5'">5</button>
 
-                            <button class="btn">7</button>
+                                <button class="btn" OnClick="display.value+='6'">6</button>
 
-                            <button class="btn">8</button>
+                                <button class="btn" OnClick="display.value+='-'">-</button>
 
-                            <button class="btn">9</button>
+                            </div>
 
-                            <button class="btn">X</button>
+                            <div class="parent-div">
 
-                        </div>
+                                <button class="btn" onclick="display.value = Math.log(display.value)">log</button>
 
-                        <div class="parent-div">
+                                <button class="btn" OnClick="display.value+='1'">1</button>
 
-                            <button class="btn">10^x</button>
+                                <button class="btn" OnClick="display.value+='2'">2</button>
 
-                            <button class="btn">4</button>
+                                <button class="btn" OnClick="display.value+='3'">3</button>
 
-                            <button class="btn">5</button>
+                                <button class="btn" OnClick="display.value+='+'">+</button>
 
-                            <button class="btn">6</button>
+                            </div>
 
-                            <button class="btn">-</button>
+                            <div class="parent-div">
 
-                        </div>
+                                <button class="btn" onclick="display.value = Math.log(display.value)">ln</button>
 
-                        <div class="parent-div">
+                                <button class="btn" onclick="display.value = Math.sign(display.value)">+/-</button>
 
-                            <button class="btn">log</button>
+                                <button class="btn" OnClick="display.value+='0'">0</button>
 
-                            <button class="btn">1</button>
+                                <button class="btn" OnClick="display.value+='.'">.</button>
 
-                            <button class="btn">2</button>
+                                <button OnClick="evalu()" style="background-color: #a0b8ff;" class="btn">=</button>
 
-                            <button class="btn">3</button>
-
-                            <button class="btn">+</button>
-
-                        </div>
-
-                        <div class="parent-div">
-
-                            <button class="btn">in</button>
-
-                            <button class="btn">+/-</button>
-
-                            <button class="btn">0</button>
-
-                            <button class="btn">.</button>
-
-                            <button style="background-color: #a0b8ff;" class="btn">=</button>
+                            </div>
 
                         </div>
 
                     </div>
-
 
 
                 </div>
