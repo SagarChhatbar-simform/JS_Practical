@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Calculator-icon.png" />
     <title>Scientific Calculator</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -13,72 +14,72 @@
 </head>
 
 <body>
+
     <section>
         <div class="container">
             <div class="top-div">
                 <div class="main-div">
                     <div class="input">
-                        <input type="text" onkeypress="return restrictAlphabets(event)" maxlength="30" placeholder="0"
+                        <input type="text" onkeypress="return restrictAlphabets(event)" maxlength="15" placeholder="0"
                             name="display" id="display" class="inpt-txt">
                     </div>
 
 
                     <div class="btn-parent">
-                        
-                            <div class="parent">
-                            <a>DEG</a>
-                            <a>F-E</a>
-                            </div>
 
-                            <div class="parent">
+                        <div class="parent">
+                            <a id="change" onclick="deg()">RAD</a>
+                            <a onclick="fe()">F-E</a>
+                        </div>
 
-                                <a>MC</a>
+                        <div class="parent">
 
-                                <a>MR</a>
+                            <a onclick="memory('MC')">MC</a>
 
-                                <a>M+</a>
+                            <a onclick="memory('MR')">MR</a>
 
-                                <a>M-</a>
+                            <a onclick="memory('M+')">M+</a>
 
-                                <a>MS</a>
+                            <a onclick="memory('M-')">M-</a>
 
-                            </div>
+                            <a onclick="memory('MS')">MS</a>
 
-                            <div class="parent">
-                                <div class="dropdown">
-                                    <a class="dropbtn">
-                                        ⃤ Trignomerty <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                    </a>
-                                    <div class="dropdown-content">
-                                        <a onclick="sine()">Sin</a>
-                                        <a onclick="cosec()">Cos</a>
-                                        <a onclick="tane()">Tan</a>
-                                    </div>
+                        </div>
+
+                        <div class="parent">
+                            <div class="dropdown">
+                                <a class="dropbtn">
+                                    ⃤ Trignomerty <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a onclick="sine()">Sin</a>
+                                    <a onclick="cosec()">Cos</a>
+                                    <a onclick="tane()">Tan</a>
                                 </div>
-
-                                <div class="dropdown">
-                                    <a class="dropbtn">
-                                        ƒ Functions <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                    </a>
-                                    <div class="dropdown-content">
-                                        <a onclick="display.value= Math.abs(display.value)">Abs</a>
-                                        <a onclick="display.value= Math.acos(display.value)">acos</a>
-                                        <a onclick="display.value= Math.asin(display.value)">asin</a>
-                                        <a onclick="display.value= Math.atan(display.value)">atan</a>
-                                        <a onclick="display.value= Math.ceil(display.value)">ceil</a>
-                                        <a onclick="display.value= Math.floor(display.value)">floor</a>
-                                        
-                                    </div>
-                                </div>
-
-
                             </div>
 
-                    
+                            <div class="dropdown">
+                                <a class="dropbtn">
+                                    ƒ Functions <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a onclick="display.value= Math.abs(display.value)">Abs</a>
+                                    <a onclick="display.value= Math.acos(display.value)">acos</a>
+                                    <a onclick="display.value= Math.asin(display.value)">asin</a>
+                                    <a onclick="display.value= Math.atan(display.value)">atan</a>
+                                    <a onclick="display.value= Math.ceil(display.value)">ceil</a>
+                                    <a onclick="display.value= Math.floor(display.value)">floor</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
                         <div>
-                            <div class="parent-div" >
+                            <div class="parent-div">
 
-                                <button class="btn">2nd</button>
+                                <button class="btn" id="2nd"  onclick="update()">2<sup>nd</sup></button>
 
                                 <button class="btn" onclick="display.value+='3.14159265359'">π</button>
 
@@ -94,7 +95,7 @@
 
                             <div class="parent-div">
 
-                                <button class="btn" onclick="display.value = Math.pow(display.value,2)">x^2</button>
+                                <button class="btn" onclick="power()" id="x2">x^2</button>
 
                                 <button class="btn" onclick="display.value = Math.pow(display.value,-1)">1/x</button>
 
@@ -108,7 +109,7 @@
 
                             <div class="parent-div">
 
-                                <button class="btn" onclick="display.value = Math.sqrt(display.value)*2">2√x</button>
+                                <button class="btn" onclick="root()" id="sqrt">2√x</button>
 
                                 <button class="btn" OnClick="display.value+='('">(</button>
 
@@ -122,7 +123,7 @@
 
                             <div class="parent-div">
 
-                                <button class="btn" onclick="display.value+='**'">x^y</button>
+                                <button class="btn" onclick="ex()" id="xraisey">x^y</sup></button>
 
                                 <button class="btn" OnClick="display.value+='7'">7</button>
 
@@ -136,7 +137,7 @@
 
                             <div class="parent-div">
 
-                                <button class="btn" onclick="display.value = Math.pow(10,display.value)">10^x</button>
+                                <button class="btn" onclick="x10()" id="10x">10^x</button>
 
                                 <button class="btn" OnClick="display.value+='4'">4</button>
 
@@ -150,7 +151,7 @@
 
                             <div class="parent-div">
 
-                                <button class="btn" onclick="display.value = Math.log(display.value)">log</button>
+                                <button class="btn" onclick="loge()" id="log">log</button>
 
                                 <button class="btn" OnClick="display.value+='1'">1</button>
 
@@ -164,7 +165,7 @@
 
                             <div class="parent-div">
 
-                                <button class="btn" onclick="display.value = Math.log(display.value)">ln</button>
+                                <button class="btn" onclick="nlog()" id="logn">ln</button>
 
                                 <button class="btn" onclick="display.value = Math.sign(display.value)">+/-</button>
 
@@ -175,7 +176,9 @@
                                 <button OnClick="evalu()" style="background-color: #a0b8ff;" class="btn">=</button>
 
                             </div>
-
+                            <div id="memory" style="text-align: center;">
+                                No Stored Value in Memory
+                            </div>
                         </div>
 
                     </div>
@@ -187,6 +190,8 @@
 
         </div>
     </section>
+
+
 
 </body>
 
